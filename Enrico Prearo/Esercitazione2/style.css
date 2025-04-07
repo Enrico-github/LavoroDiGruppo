@@ -1,0 +1,19 @@
+body{
+    background-color: darksalmon;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+p{
+    text-align: center;
+    font-weight: bold;
+}
+div{
+    display: flex;
+    border-radius: 25%;
+    background-color: antiquewhite;
+    width: 300px;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+}
