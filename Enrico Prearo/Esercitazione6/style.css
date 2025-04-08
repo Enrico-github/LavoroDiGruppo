@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #111;
+    font-family: sans-serif;
+  }
+  
+  .rainbow-container {
+    padding: 40px 60px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    border-radius: 20px;
+    animation: rainbowBackground 10s linear infinite;
+    text-align: center;
+  }
+  
+  @keyframes rainbowBackground {
+    0%   { background-color: red; }
+    14%  { background-color: orange; }
+    28%  { background-color: yellow; }
+    42%  { background-color: green; }
+    57%  { background-color: cyan; }
+    71%  { background-color: blue; }
+    85%  { background-color: violet; }
+    100% { background-color: red; }
+  }
