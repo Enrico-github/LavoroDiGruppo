@@ -1,0 +1,16 @@
+body{
+    background-color: black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+p{
+    border: ridge;
+    border-width: 15px;
+    border-color: yellowgreen;
+    color: aliceblue;
+}
+.bordoIMG{
+    border: 20px solid whitesmoke;
+    border-style: dashed;
+}
