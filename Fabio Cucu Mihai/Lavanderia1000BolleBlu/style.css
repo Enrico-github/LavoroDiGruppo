@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar button {
+  list-style-type: none;
+  background-color: #0052f5;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar a {
+  display: block;
+  color: white;
+  text-align:start;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+header {
+  background-color: hsl(0, 0%, 83%);
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
