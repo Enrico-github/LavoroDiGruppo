@@ -1,0 +1,28 @@
+h1{
+    font-family: serif;
+    font-size: 50px;
+    color: darkblue;
+    text-align: center;
+}
+h3{
+    font-family: serif;
+    font-size: 30px;
+    color: darkblue;
+    text-align: center;
+}
+div{
+   align-items: center;
+   text-align: center;
+}
+p{
+    font-family: sans-serif;
+    font-size: 20px;
+    color: cornflowerblue;
+    text-align: center;
+}
+body{
+    background-color: lightgray;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
