@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fff0f5;
+    color: #333;
+  }
+  header {
+    background-color: #555;
+    padding: 20px;
+    text-align: center;
+    color: white;
+  }
+  nav {
+    margin-top: 10px;
+  }
+  nav a {
+    margin: 0 15px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .hero {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #ffe4e1;
+  }
+  .hero h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+  }
+  .hero p {
+    font-size: 1.2em;
+    color: #555;
+  }
+  footer {
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    margin-top: 40px;
+  }
