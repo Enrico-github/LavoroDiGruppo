@@ -1,0 +1,18 @@
+/* selettore per tag 3*/
+p{
+    background-color: blue;
+    font-size: 32px;
+    line-height: 1.5;
+}
+/* selettore per id 1*/
+#container{
+    background-color: red;
+    font-size: 32px;
+    line-height: 1.5;
+}
+/* selettore per classi 2*/
+.container{
+    background-color: green;
+    font-size: 32px;
+    line-height: 1.5;
+}
