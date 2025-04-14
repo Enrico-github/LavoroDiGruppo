@@ -1,0 +1,45 @@
+/* This is a CSS file */
+/* It contains styles for the HTML elements */
+p {
+    background-color: lightgray;
+    color: blue;
+    font-size: 16px;
+}
+
+#infoClasse {
+    background-color: yellow;
+    color: crimson;
+    font-size: 18px;
+}
+
+.classTestCSS {
+    background-color: darkblue;
+    color: chartreuse;
+    font-size: 20px;
+}
+
+span {
+    background-color: lightgreen;
+    color: darkred;
+    font-size: 14px;
+}
+
+div {
+    background-color: lightblue;
+    color: darkblue;
+    font-size: 22px;
+    border: 4px solid black; /*Aggiunge un bordo nero di 4px*/
+    border-radius: 10px; /*Aggiunge angoli arrotondati*/
+    padding: 30px; /*Aggiunge spazio tra il contenuto e il bordo*/
+    margin: 20px; /*Aggiunge spazio tra il bordo e gli altri elementi*/
+}
+
+#boxModelID {
+    background-color: lightblue;
+    color: darkblue;
+    font-size: 22px;
+    border: 4px solid black; /*Aggiunge un bordo nero di 4px*/
+    border-radius: 10px; /*Aggiunge angoli arrotondati*/
+    padding: 30px; /*Aggiunge spazio tra il contenuto e il bordo*/
+    margin: 20px; /*Aggiunge spazio tra il bordo e gli altri elementi*/
+}
