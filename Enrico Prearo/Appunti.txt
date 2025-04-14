@@ -1,0 +1,11 @@
+Appunti
+
+i tag si differenziano in tag di blocco e tag inline.
+i tag di blocco occupano tutto lo spazio fino alla fine della linea.
+i tag inline occupano solo lo spazio della scrittura necessario.
+# vedi w3school
+
+i selettori che vanno a modificare i tag hanno un ordine di priorità:
+1. selettore per id 
+2. selettore per classi
+3. selettore per tag
