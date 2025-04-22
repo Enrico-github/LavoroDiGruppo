@@ -1,0 +1,39 @@
+body {
+  /**/
+  display: flex;
+  justify-content: center;/*Serve per centrare il body lungo al direzione principale*/
+  align-items: center;/*Serve per centrare il body lungo la direzione perpendicolare*/
+  height: 100vh;
+  background-color: #140235;
+  font-family: Arial, sans-serif;
+}
+.calcolatrice {
+  display: grid;/*Permettere di mettere i pulsanti a griglia, invece che uno sopra/accanto l'altro*/
+  gap: 10px;/*Imposta uno spazio tra i pulsanti in px*/
+  width: 300px;
+  padding: 20px;/*Modifca la grandezza in px della*/
+  border: 1px solid #ccc;
+  border-radius: 10px;/*Arrotondamento vertici della calcolatrice*/
+  background-color: #fff;/*Colore sfondo calcolatrice*/
+}
+.display {
+  grid-column: span 4; /*Modifica la lunghezza del display*/
+  background-color: #222;
+  color: #fff;
+  font-size: 2em;
+  padding: 20px;
+  text-align: right;
+  border-radius: 10px;
+}
+.button {
+  padding: 20px; /*Modifca la grandezza in px dei pulsanti*/
+  font-size: 1.5em;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #eee;
+  cursor: pointer;/*Modifica la forma del cursore*/
+  text-align: center;
+}
+.button.equal{
+  grid-column: span 4; /*Modifica la lunghezza del pulsante*/
+}

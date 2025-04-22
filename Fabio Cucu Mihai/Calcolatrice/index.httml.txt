@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Calcolatrice</title>
+</head>
+<body>
+  <div class="calcolatrice">
+        <div class="display" id="display">0</div>
+        <div class="button" onclick="cancellaDisplay()">C</div>
+        <div class="button" onclick="scegliOperazione('/')">/</div>
+        <div class="button" onclick="scegliOperazione('*')">*</div>
+        <div class="button" onclick="scegliOperazione('-')">-</div>
+        <div class="button" onclick="scegliOperazione('+')">+</div>
+        <div class="button" onclick="appendNumber('0')">0</div>
+        <div class="button" onclick="appendNumber('1')">1</div>
+        <div class="button" onclick="appendNumber('2')">2</div>
+        <div class="button" onclick="appendNumber('3')">3</div>
+        <div class="button" onclick="appendNumber('4')">4</div>
+        <div class="button" onclick="appendNumber('5')">5</div>
+        <div class="button" onclick="appendNumber('6')">6</div>
+        <div class="button" onclick="appendNumber('7')">7</div>
+        <div class="button" onclick="appendNumber('8')">8</div>
+        <div class="button" onclick="appendNumber('9')">9</div>
+        <div class="button" onclick="appendNumber('.')">.</div>
+        <div class="button equal" onclick="calcoli()">=</div>
+    </div>
+    <script src="script.js" defer></script>
+</body>
+</html>
