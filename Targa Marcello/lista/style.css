@@ -1,0 +1,19 @@
+body { 
+    font-family: sans-serif; 
+    text-align: center; 
+    margin-top: 50px; 
+}
+input, button { 
+    padding: 8px; 
+    margin: 5px; 
+}
+ul { 
+    list-style: none; 
+    padding: 0; 
+}
+li { 
+    margin: 5px 0; 
+    background: #eee; 
+    padding: 10px; 
+    border-radius: 5px; 
+}
