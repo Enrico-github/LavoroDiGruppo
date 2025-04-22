@@ -1,0 +1,17 @@
+body { 
+    text-align: center; 
+    margin-top: 50px; 
+    font-family: sans-serif; 
+}
+#box {
+  width: 200px;
+  height: 200px;
+  background-color: lightblue;
+  margin: 20px auto;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+}
