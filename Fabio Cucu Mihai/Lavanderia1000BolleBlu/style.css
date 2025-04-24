@@ -1,27 +1,63 @@
+:root {
+  --primary-color: #061463;
+  --secondary-color: #036c8b;
+  --accent-color: #1d9b95;
+  --text-color: #333;
+  --bg-color: #f9f9f9;
+  --card-bg: #fff;
+  --light-gray: #f2f2f2;
+}
+
 body {
-  margin: 0;
-  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
 }
 
-.navbar button {
-  list-style-type: none;
-  background-color: #0052f5;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar a {
-  display: block;
-  color: white;
-  text-align:start;
-  padding: 14px 16px;
-  text-decoration: none;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 header {
-  background-color: hsl(0, 0%, 83%);
+  background-color: var(--primary-color);
   color: white;
-  padding: 10px;
+  padding: 1rem 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav {
+  background-color: var(--secondary-color);
+  padding: 0.5rem 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 3px;
+  transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 1rem;
   text-align: center;
 }

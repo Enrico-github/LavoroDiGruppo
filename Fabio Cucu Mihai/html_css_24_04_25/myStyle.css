@@ -1,0 +1,39 @@
+/**Selettore su tag*/
+p {
+    background-color: yellow;
+    color: black
+}
+/**Selettore su ID*/
+#infoClasse {
+    background-color: aqua;
+    color:blue;
+}
+/**Selettore su classe*/
+.classTestCSS {
+    background-color: blueviolet;
+    color: aquamarine;
+}
+span{
+    background-color: brown;
+}
+h1 span span{
+    background-color: yellow;
+}
+div{
+    border: 4px solid;
+    border-color: black;
+    padding: 30px;
+    margin-top: 50px;
+    margin-bottom: 150px;
+    text-align: center;
+}
+#boxModelID{
+    border: 30px;
+    color: rgb(5, 255, 255);
+    margin-top: 2300;
+    margin-left: 50;
+    padding: 60px;
+}
+.container {
+    display: flex;
+}

@@ -1,0 +1,53 @@
+.container {
+    display: flex;
+    justify-content: left;
+    background-color: cyan;
+    padding: 20px;
+}
+
+a,
+div p {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(22, 43, 231)
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    background-color: cyan;
+    padding: 20px;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    background-color: cyan;
+    padding: 20px;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: blue;
+}
+
+a:hover {
+    color: white
+}
+
+a:active {
+    color: cornflowerblue;
+}
+
+.wrapper {
+    border: 5px solid black;
+    padding: 10px;
+    min-height: 96vh;
+    margin: 1vh 1vw 1vh 1vw;
+    display: flex;
+    flex-direction: column;
+}
