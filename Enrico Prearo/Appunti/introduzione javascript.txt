@@ -1,0 +1,10 @@
+alt + 96 = `
+tipi di dati in js:
+array -> passaggio per riferimento
+number - string - boolean  -> passaggio per valore
+null - undefined - symbol
+si possono sommare tipi di dati diversi, es: 5 + "4" = 54
+operatore ternario:
+console.log(14>5 ? `ok` : `ko`)
+== -> confronta il valore
+=== -> confronta il tipo
