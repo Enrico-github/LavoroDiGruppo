@@ -51,3 +51,37 @@ function myFunction(var1, var2, var3) {
 }
 
 console.log(myFunction(1, 2, 3)); //6
+
+function myFuncArr(myArr)
+{
+    myArr.push('Giuseppe'); //aggiunge Giusseppe alla fine dell'array
+}
+
+myFuncArr(amici); //aggiunge Giuseppe alla fine dell'array
+console.log(amici); // ['Marco', 'Giovanni', 'Luca', 'Francesco', 'Giuseppe']
+
+function printNum(...args)// rest operator
+{
+    console.log(args); //stampa gli argomenti passati alla funzione
+}
+
+printNum(2,3,4);
+printNum(3,4,5,6,7,8,9,10);
+
+let addTwoNum = function (a, b) {
+    return a + b;
+}
+
+console.log(addTwoNum(5, 2)); //7
+
+let addThreeNum = (a, b, c) => {
+    return a + b + c;
+}
+
+console.log(addThreeNum(5, 2, 1)); //8
+
+amici.forEach(function (value, index, array) {
+    array[index] = value.toLowerCase(); //trasforma in minuscolo
+});
+
+console.log(amici); // ['marco', 'giovanni', 'luca', 'francesco', 'giuseppe']
