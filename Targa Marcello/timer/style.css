@@ -1,0 +1,14 @@
+body {
+    font-family: monospace;
+    text-align: center;
+    margin-top: 100px;
+  }
+  button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+  }
+  #timer {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
