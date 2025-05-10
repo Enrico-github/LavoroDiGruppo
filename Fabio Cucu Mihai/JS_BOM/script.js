@@ -17,7 +17,6 @@ function checkLarghezza()
     if (larghezza > 0 && larghezza <= 300)
     {
         console.log("Dispositivo largo quanto un telefono");
-        
     }
     else if (larghezza <= 600)
     {
