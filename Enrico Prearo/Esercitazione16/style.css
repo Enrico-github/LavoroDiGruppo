@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .buttons {
+    margin-bottom: 20px;
+  }
+  
+  .color-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .color-btn.red {
+    background-color: red;
+  }
+  
+  .color-btn.green {
+    background-color: green;
+  }
+  
+  .color-btn.blue {
+    background-color: blue;
+  }
+  
+  .color-btn.yellow {
+    background-color: goldenrod;
+  }
+  
+  .box {
+    width: 300px;
+    height: 200px;
+    margin: auto;
+    background-color: lightgray;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    transition: background-color 0.5s ease;
+  }
+  
