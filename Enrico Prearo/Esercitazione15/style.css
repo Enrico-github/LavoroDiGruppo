@@ -1,0 +1,21 @@
+#scroll-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    width: 0%;
+    z-index: 100;
+    transition: width 0.2s ease-out;
+  }
+
+  .content {
+    padding: 20px;
+    font-family: sans-serif;
+  }
+
+  .filler {
+    height: 2000px;
+    background: linear-gradient(#fff, #ddd);
+  }
+  
