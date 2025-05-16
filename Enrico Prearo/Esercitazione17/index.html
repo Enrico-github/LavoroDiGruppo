@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Negozio di Armi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Negozio di Armi</h1>
+  <div id="shop">
+    <div class="item" onclick="addToCart('Spada', 100)">
+      <h2>Spada</h2>
+      <p>Prezzo: 100 oro</p>
+    </div>
+    <div class="item" onclick="addToCart('Ascia', 120)">
+      <h2>Ascia</h2>
+      <p>Prezzo: 120 oro</p>
+    </div>
+    <div class="item" onclick="addToCart('Arco', 90)">
+      <h2>Arco</h2>
+      <p>Prezzo: 90 oro</p>
+    </div>
+    <div class="item" onclick="addToCart('Pugnale', 60)">
+      <h2>Pugnale</h2>
+      <p>Prezzo: 60 oro</p>
+    </div>
+  </div>
+
+  <div id="cart">
+    <h2>Carrello</h2>
+    <ul id="cart-list"></ul>
+    <p><strong>Totale:</strong> <span id="total">0</span> oro</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
