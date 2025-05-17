@@ -1,21 +1,13 @@
 //Creazione di una array contenenti i prodotti del negozio
-const products = [ 
-    { id: 1, name: "Arma PIU PIU 1", price: 99.99, image: "" },
-    { id: 2, name: "Arma PIU PIU 2", price: 199.99, image: "" },
-    { id: 3, name: "Arma PIU PIU 3", price: 59.99, image: "" },
-    { id: 4, name: "Arma PIU PIU 4", price: 49.99, image: "" },
-    { id: 5, name: "Arma PIU PIU 5", price: 89.99, image: "" },
-    { id: 6, name: "Arma PIU PIU 6", price: 49.99, image: "" },
-    { id: 7, name: "Arma PIU PIU 7", price: 209.99, image: "" },
-    { id: 8, name: "Arma PIU PIU 8", price: 139.99, image: "" },
-    { id: 9, name: "Arma PIU PIU 9", price: 159.99, image: "" },
-    { id: 10, name: "Arma PIU PIU 10", price: 149.99, image: "" },
-    { id: 11, name: "Arma PIU PIU 11", price: 189.99, image: "" },
-    { id: 12, name: "Arma PIU PIU 12", price: 79.99, image: "" },
-    { id: 13, name: "Arma PIU PIU 13", price: 59.99, image: "" },
-    { id: 14, name: "Arma PIU PIU 14", price: 119.99, image: "" },
-    { id: 15, name: "Arma PIU PIU 15", price: 429.99, image: "" },
-    { id: 16, name: "Arma PIU PIU 16", price: 179.99, image: "" }
+const products = [
+    { id: 1, name: "Arma PIU PIU 1", price: 99.99, image: "img/M4A1.webp" },
+    { id: 2, name: "Arma PIU PIU 2", price: 199.99, image: "img/SR-25.webp" },
+    { id: 3, name: "Arma PIU PIU 3", price: 59.99, image: "img/mp5.webp" },
+    { id: 4, name: "Arma PIU PIU 4", price: 49.99, image: "img/saiga12k.webp" },
+    { id: 5, name: "Arma PIU PIU 1", price: 99.99, image: "img/mpx.webp" },
+    { id: 6, name: "Arma PIU PIU 2", price: 199.99, image: "img/Sa-58.webp" },
+    { id: 7, name: "Arma PIU PIU 3", price: 59.99, image: "img/FNp90.webp" },
+    { id: 8, name: "Arma PIU PIU 4", price: 49.99, image: "img/MPS12.webp" }
 ];
 
 let cart = JSON.parse(localStorage.getItem('carrello')) || [];
