@@ -1,21 +1,22 @@
 //Creazione di una array contenenti i prodotti del negozio
 const products = [
-    { id: 1, name: "FN P90", price: 1399.99, image: "img/FNp90.webp" },
-    { id: 2, name: "M4A1", price: 3059.99, image: "img/M4A1.webp" },
-    { id: 3, name: "MP5", price: 3489.99, image: "img/mp5.webp" },
-    { id: 4, name: "MPS AA-12", price: 3249.99, image: "img/MPS12.webp" },
-    { id: 5, name: "MPX", price: 2999.99, image: "img/mpx.webp" },
-    { id: 6, name: "SA-58", price: 1799.99, image: "img/SA-58.webp" },
-    { id: 7, name: "Saiga 12k", price: 1199.99, image: "img/saiga12k.webp" },
-    { id: 8, name: "SR-25", price: 4499.99, image: "img/SR-25.webp" },
-    { id: 9, name: "M700", price: 599.99, image: "img/M700.webp" },
-    { id: 10, name: "VSS vintorez", price: 6999.99, image: "img/VSS.webp" },
-    { id: 11, name: "AK-74", price: 1289.99, image: "img/AK-74.webp" },
-    { id: 12, name: "MP7", price: 11999.99, image: "img/MP7.webp" },
-    { id: 13, name: "Model 870", price: 1499.99, image: "img/Model870.webp" },
-    { id: 14, name: "AUG-A3", price: 2199.99, image: "img/AUG-A3.webp" },
-    { id: 15, name: "Desert Eagle .50", price: 3099.99, image: "img/DE50.webp" },
-    { id: 16, name: "M1911", price: 1099.99, image: "img/M1911.webp" }
+    { id: 1, name: "M1911", price: 1099.99, image: "immagini/img/M1911.webp", video: "videoArmi/M1911.mp4" },
+    { id: 2, name: "M4A1", price: 3059.99, image: "immagini/img/M4A1.webp", video: "videoArmi/M4A1.mp4" },
+    { id: 3, name: "MP5", price: 3489.99, image: "immagini/img/mp5.webp", video: "videoArmi/MP5.mp4" },
+    { id: 4, name: "AK-74", price: 1289.99, image: "immagini/img/AK-74.webp", video: "videoArmi/AK-74.mp4" },
+    { id: 5, name: "MPX", price: 2999.99, image: "immagini/img/mpx.webp" },
+    { id: 6, name: "SA-58", price: 1799.99, image: "immagini/img/SA-58.webp" },
+    { id: 7, name: "Saiga 12k", price: 1199.99, image: "immagini/img/saiga12k.webp" },
+    { id: 8, name: "SR-25", price: 4499.99, image: "immagini/img/SR-25.webp" },
+    { id: 9, name: "M700", price: 599.99, image: "immagini/img/M700.webp" },
+    { id: 10, name: "VSS vintorez", price: 6999.99, image: "immagini/img/VSS.webp" },
+    { id: 11, name: "MPS AA-12", price: 3249.99, image: "immagini/img/MPS12.webp" },
+    { id: 12, name: "MP7", price: 11999.99, image: "immagini/img/MP7.webp" },
+    { id: 13, name: "Model 870", price: 1499.99, image: "immagini/img/Model870.webp" },
+    { id: 14, name: "AUG-A3", price: 2199.99, image: "immagini/img/AUG-A3.webp" },
+    { id: 15, name: "Desert Eagle .50", price: 3099.99, image: "immagini/img/DE50.webp" },
+    { id: 16, name: "FN P90", price: 1399.99, image: "immagini/img/FNp90.webp" },
+    
 ];
 
 let cart = JSON.parse(localStorage.getItem('carrello')) || [];//se nonesiste il carrello alllora cart sarà un array vuoto
@@ -211,3 +212,29 @@ document.addEventListener('DOMContentLoaded', function () {
     const count = cart.reduce((total, item) => total + item.quantity, 0);
     document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
 });
+function mostraProdotti(productsToShow, elementId) {
+    const container = document.getElementById(elementId);
+    if (!container) return;
+
+    container.innerHTML = productsToShow.map(product => {
+        // Aggiunge il video solo se esiste la proprietà video
+        const videoHtml = product.video ? `
+            <div class="product-video">
+                <video width="100%" controls muted>
+                    <source src="${product.video}" type="video/mp4">
+                    Il tuo browser non supporta il tag video.
+                </video>
+            </div>
+        ` : '';
+
+        return `
+            <div class="product">
+                <img src="${product.image}" alt="${product.name}">
+                ${videoHtml}
+                <h3>${product.name}</h3>
+                <p>€${product.price.toFixed(2)}</p>
+                <button onclick="aggiungi(${product.id})">Add to Cart</button>
+            </div>
+        `;
+    }).join('');
+}
