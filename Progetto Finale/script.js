@@ -1,21 +1,21 @@
 //Creazione di una array contenenti i prodotti del negozio
 const products = [
-    { id: 1, name: "Arma PIU PIU 1", price: 99.99, image: "immagini/img/FNp90.webp" },
-    { id: 2, name: "Arma PIU PIU 2", price: 199.99, image: "immagini/img/M4A1.webp" },
-    { id: 3, name: "Arma PIU PIU 3", price: 59.99, image: "immagini/img/mp5.webp" },
-    { id: 4, name: "Arma PIU PIU 4", price: 49.99, image: "immagini/img/MPS12.webp" },
-    { id: 5, name: "Arma PIU PIU 5", price: 99.99, image: "immagini/img/mpx.webp" },
-    { id: 6, name: "Arma PIU PIU 6", price: 199.99, image: "immagini/img/SA-58.webp" },
-    { id: 7, name: "Arma PIU PIU 7", price: 59.99, image: "immagini/img/saiga12k.webp" },
-    { id: 8, name: "Arma PIU PIU 8", price: 49.99, image: "immagini/img/SR-25.webp" },
-    { id: 9, name: "Arma PIU PIU 9", price: 49.99, image: "immagini/img" },
-    { id: 10, name: "Arma PIU PIU 10", price: 49.99, image: "immagini/img" },
-    { id: 11, name: "Arma PIU PIU 11", price: 49.99, image: "immagini/img" },
-    { id: 12, name: "Arma PIU PIU 12", price: 49.99, image: "immagini/img" },
-    { id: 13, name: "Arma PIU PIU 13", price: 49.99, image: "immagini/img" },
-    { id: 14, name: "Arma PIU PIU 14", price: 49.99, image: "immagini/img" },
-    { id: 15, name: "Arma PIU PIU 15", price: 49.99, image: "immagini/img" },
-    { id: 16, name: "Arma PIU PIU 16", price: 49.99, image: "immagini/img" }
+    { id: 1, name: "FN P90", price: 1399.99, image: "immagini/img/FNp90.webp" },
+    { id: 2, name: "M4A1", price: 3059.99, image: "immagini/img/M4A1.webp" },
+    { id: 3, name: "MP5", price: 3489.99, image: "immagini/img/mp5.webp" },
+    { id: 4, name: "MPS AA-12", price: 3249.99, image: "immagini/img/MPS12.webp" },
+    { id: 5, name: "MPX", price: 2999.99, image: "immagini/img/mpx.webp" },
+    { id: 6, name: "SA-58", price: 1799.99, image: "immagini/img/SA-58.webp" },
+    { id: 7, name: "Saiga 12k", price: 1199.99, image: "immagini/img/saiga12k.webp" },
+    { id: 8, name: "SR-25", price: 4499.99, image: "immagini/img/SR-25.webp" },
+    { id: 9, name: "M700", price: 599.99, image: "immagini/img/M700.webp" },
+    { id: 10, name: "VSS vintorez", price: 6999.99, image: "immagini/img/VSS.webp" },
+    { id: 11, name: "AK-74", price: 1289.99, image: "immagini/img/AK-74.webp" },
+    { id: 12, name: "MP7", price: 11999.99, image: "immagini/img/MP7.webp" },
+    { id: 13, name: "Model 870", price: 1499.99, image: "immagini/img/Model870.webp" },
+    { id: 14, name: "AUG-A3", price: 2199.99, image: "immagini/img/AUG-A3.webp" },
+    { id: 15, name: "Desert Eagle .50", price: 3099.99, image: "immagini/img/DE50.webp" },
+    { id: 16, name: "M1911", price: 1099.99, image: "immagini/img/M1911.webp" }
 ];
 
 let cart = JSON.parse(localStorage.getItem('carrello')) || [];//se nonesiste il carrello alllora cart sarà un array vuoto
@@ -71,7 +71,7 @@ function aggioraQuantità(productId, change) {
 
     item.quantity += change;
     if (item.quantity < 1) rimuovi(productId);
-    
+
     salvaCarrello();
     mostraCarrello();
 }
@@ -113,7 +113,7 @@ function login() {
             e.preventDefault();
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            
+
             if (username && password) {
                 alert('Login completato!');
             } else {
@@ -153,3 +153,13 @@ function init() {
 }
 //carica la funzione "init" subito dopo che il DOM finisce di caricarsi
 document.addEventListener('DOMContentLoaded', init);
+// Inizializzazione specifica per la pagina contatti
+document.addEventListener('DOMContentLoaded', function () {
+    // Eventuali funzioni specifiche per la pagina contatti
+    // (al momento non ce ne sono, ma lo script è pronto per eventuali aggiunte)
+
+    // Manteniamo il conteggio del carrello aggiornato
+    const cart = JSON.parse(localStorage.getItem('carrello')) || [];
+    const count = cart.reduce((total, item) => total + item.quantity, 0);
+    document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
+});
