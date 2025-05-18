@@ -412,7 +412,7 @@ nav a.active {
     transition: all 0.3s ease;
 }
 
-.form-group input:focus {/* Stile per icampi di input qaundo l'utente interagisce con essi */
+.form-group input:focus {/* Stile per i campi di input qaundo l'utente interagisce con essi */
     border-color: var(--secondary);
     outline: none;
     box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.2);
@@ -459,7 +459,7 @@ footer {
     border-top: 3px solid var(--secondary);
     text-align: center;
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
-    position: fixed; /* Fissa il footer in fondo alla pagina */
+    position: sticky; /* Fissa il footer in fondo alla pagina */
     left: 0;
     bottom: 0;
     width: 100%;

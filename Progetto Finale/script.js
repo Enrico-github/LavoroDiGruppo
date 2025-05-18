@@ -55,16 +55,13 @@ function filtraProdotti() {
     // Mostra i prodotti filtrati
     mostraProdotti(prodottiFiltrati, 'all-products');
     
-    // Aggiorna un contatore di risultati (opzionale)
+    // Aggiorna un contatore di risultati
     const infoRisultati = document.createElement('div');
     infoRisultati.id = 'search-results-info';
     infoRisultati.style.marginTop = '10px';
-    infoRisultati.style.color = 'var(--light)';
     
     if (testoRicerca) {
-        infoRisultati.textContent = prodottiFiltrati.length > 0 
-            ? `Trovati ${prodottiFiltrati.length} risultati per "${testoRicerca}"` 
-            : `Nessun risultato per "${testoRicerca}"`;
+        infoRisultati.textContent = prodottiFiltrati.length > 0 ? `Trovati ${prodottiFiltrati.length} risultati per "${testoRicerca}"` : `Nessun risultato per "${testoRicerca}"`;
     } else {
         infoRisultati.textContent = '';
     }
