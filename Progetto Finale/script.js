@@ -1,35 +1,43 @@
 //Creazione di una array contenenti i prodotti del negozio
 const products = [
-    { id: 1, name: "Arma PIU PIU 1", price: 99.99, image: "img/M4A1.webp" },
-    { id: 2, name: "Arma PIU PIU 2", price: 199.99, image: "img/SR-25.webp" },
-    { id: 3, name: "Arma PIU PIU 3", price: 59.99, image: "img/mp5.webp" },
-    { id: 4, name: "Arma PIU PIU 4", price: 49.99, image: "img/saiga12k.webp" },
-    { id: 5, name: "Arma PIU PIU 1", price: 99.99, image: "img/mpx.webp" },
-    { id: 6, name: "Arma PIU PIU 2", price: 199.99, image: "img/Sa-58.webp" },
-    { id: 7, name: "Arma PIU PIU 3", price: 59.99, image: "img/FNp90.webp" },
-    { id: 8, name: "Arma PIU PIU 4", price: 49.99, image: "img/MPS12.webp" }
+    { id: 1, name: "Arma PIU PIU 1", price: 99.99, image: "immagini/img/FNp90.webp" },
+    { id: 2, name: "Arma PIU PIU 2", price: 199.99, image: "immagini/img/M4A1.webp" },
+    { id: 3, name: "Arma PIU PIU 3", price: 59.99, image: "immagini/img/mp5.webp" },
+    { id: 4, name: "Arma PIU PIU 4", price: 49.99, image: "immagini/img/MPS12.webp" },
+    { id: 5, name: "Arma PIU PIU 5", price: 99.99, image: "immagini/img/mpx.webp" },
+    { id: 6, name: "Arma PIU PIU 6", price: 199.99, image: "immagini/img/SA-58.webp" },
+    { id: 7, name: "Arma PIU PIU 7", price: 59.99, image: "immagini/img/saiga12k.webp" },
+    { id: 8, name: "Arma PIU PIU 8", price: 49.99, image: "immagini/img/SR-25.webp" },
+    { id: 9, name: "Arma PIU PIU 9", price: 49.99, image: "immagini/img" },
+    { id: 10, name: "Arma PIU PIU 10", price: 49.99, image: "immagini/img" },
+    { id: 11, name: "Arma PIU PIU 11", price: 49.99, image: "immagini/img" },
+    { id: 12, name: "Arma PIU PIU 12", price: 49.99, image: "immagini/img" },
+    { id: 13, name: "Arma PIU PIU 13", price: 49.99, image: "immagini/img" },
+    { id: 14, name: "Arma PIU PIU 14", price: 49.99, image: "immagini/img" },
+    { id: 15, name: "Arma PIU PIU 15", price: 49.99, image: "immagini/img" },
+    { id: 16, name: "Arma PIU PIU 16", price: 49.99, image: "immagini/img" }
 ];
 
-let cart = JSON.parse(localStorage.getItem('carrello')) || [];
+let cart = JSON.parse(localStorage.getItem('carrello')) || [];//se nonesiste il carrello alllora cart sarà un array vuoto
 //salva lo stato del carrello
 function salvaCarrello() {
     localStorage.setItem('carrello', JSON.stringify(cart));
 }
 //metodo che calcola il numero di articoli nel carrello
 function aggiornaConto() {
-    const count = cart.reduce((total, item) => total + item.quantity, 0);
+    const count = cart.reduce((total, item) => total + item.quantity, 0); // Somma la quantità di prodotti nel carrello
     document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
 }
-//metodo che mostra i prodotti specificati
+//metodo che mostra i prodotti
 function mostraProdotti(productsToShow, elementId) {
     const container = document.getElementById(elementId);
     if (!container) return;
-    
+    //crezione degli elementi html dei prodotti
     container.innerHTML = productsToShow.map(product => `
         <div class="product">
             <img src="${product.image}" alt="${product.name}">
             <h3>${product.name}</h3>
-            <p>$${product.price.toFixed(2)}</p>
+            <p>€${product.price.toFixed(2)}</p>
             <button onclick="aggiungi(${product.id})">Add to Cart</button>
         </div>
     `).join('');
@@ -77,24 +85,24 @@ function mostraCarrello() {
         document.getElementById('cart-total').style.display = 'none';
         return;
     }
-
+    //aggiunge degli elementi html nel carrello quando dei prodotti vengono selezionati
     container.innerHTML = cart.map(item => `
         <div class="cart-item">
             <img src="${item.image}" width="50">
             <div>
                 <h4>${item.name}</h4>
-                <p>$${item.price.toFixed(2)} × 
+                <p>€${item.price.toFixed(2)} × 
                 <button onclick="aggioraQuantità(${item.id}, -1)">-</button>
                 ${item.quantity}
                 <button onclick="aggioraQuantità(${item.id}, 1)">+</button>
                 </p>
-                <button onclick="rimuovi(${item.id})">Remove</button>
+                <button onclick="rimuovi(${item.id})">Remove</button> <!--Bottone per rimuovere completamente un elemento-->
             </div>
         </div>
     `).join('');
 
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    document.getElementById('cart-total').innerHTML = `Total: $${total.toFixed(2)}`;
+    document.getElementById('cart-total').innerHTML = `Totale: €${total.toFixed(2)}`;
     document.getElementById('cart-total').style.display = 'block';
 }
 //simulazione di un login
@@ -107,9 +115,9 @@ function login() {
             const password = document.getElementById('password').value;
             
             if (username && password) {
-                alert('Login successful!');
+                alert('Login completato!');
             } else {
-                alert('Please enter both fields');
+                alert('Riempi entrambi i campi!');
             }
         };
     }
@@ -132,7 +140,7 @@ function init() {
     if (checkoutBtn) {
         checkoutBtn.onclick = () => {
             if (cart.length > 0) {
-                alert(`Order placed! Total: $${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}`);
+                alert(`Pagamento completato! 👌 Totale: €${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}`);
                 cart = [];
                 salvaCarrello();
                 aggiornaConto();
