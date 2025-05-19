@@ -59,30 +59,30 @@ function mostraProdotti(productsToShow, elementId) {
 function filtraProdotti() {
     // Prendi il testo dalla barra di ricerca e rimuovi gli spazi iniziali e finali
     const testoRicerca = document.getElementById('search').value.trim().toLowerCase();
-    
+
     // Filtra i prodotti che contengono il testo di ricerca nel nome
-    const prodottiFiltrati = products.filter(product => 
+    const prodottiFiltrati = products.filter(product =>
         product.name.toLowerCase().includes(testoRicerca)
     );
-    
+
     // Mostra i prodotti filtrati
     mostraProdotti(prodottiFiltrati, 'all-products');
-    
+
     // Aggiorna un contatore di risultati
     const infoRisultati = document.createElement('div');
     infoRisultati.id = 'search-results-info';
     infoRisultati.style.marginTop = '10px';
-    
+
     if (testoRicerca) {
         infoRisultati.textContent = prodottiFiltrati.length > 0 ? `Trovati ${prodottiFiltrati.length} risultati per "${testoRicerca}"` : `Nessun risultato per "${testoRicerca}"`;
     } else {
         infoRisultati.textContent = '';
     }
-    
+
     // Rimuovi eventuali messaggi precedenti
     const vecchioInfo = document.getElementById('search-results-info');
     if (vecchioInfo) vecchioInfo.remove();
-    
+
     // Aggiungi il nuovo messaggio dopo la barra di ricerca
     const filtriContainer = document.querySelector('.product-filters');
     if (filtriContainer) {
@@ -181,9 +181,9 @@ function init() {
         if (searchInput) {
             // Filtro mentre l'utente digita
             searchInput.addEventListener('input', filtraProdotti);
-            
+
             // Filtro quando si preme Invio
-            searchInput.addEventListener('keypress', function(e) {
+            searchInput.addEventListener('keypress', function (e) {
                 if (e.key === 'Enter') {
                     filtraProdotti();
                 }

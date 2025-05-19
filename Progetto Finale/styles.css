@@ -1,14 +1,21 @@
-
 /* Global Styles - Military Theme */
 :root {
-    --primary: #2a3e27;        /* Dark military green */
-    --secondary: #8b0000;      /* Dark red for accent */
-    --light: #e0e0d1;          /* Light khaki */
-    --dark: #1a1a1a;           /* Almost black */
-    --success: #3e5c39;        /* Forest green */
-    --danger: #8b0000;         /* Dark red */
-    --camo-light: #a09c78;     /* Light camo color */
-    --camo-mid: #7a7752;       /* Mid camo color */
+    --primary: #2a3e27;
+    /* Dark military green */
+    --secondary: #8b0000;
+    /* Dark red for accent */
+    --light: #e0e0d1;
+    /* Light khaki */
+    --dark: #1a1a1a;
+    /* Almost black */
+    --success: #3e5c39;
+    /* Forest green */
+    --danger: #8b0000;
+    /* Dark red */
+    --camo-light: #a09c78;
+    /* Light camo color */
+    --camo-mid: #7a7752;
+    /* Mid camo color */
     --text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
@@ -131,7 +138,8 @@ nav a.active {
     margin-top: 30px;
 }
 
-.product { /* Stile per i prodotti */
+.product {
+    /* Stile per i prodotti */
     background: linear-gradient(145deg, #2c2c2c, #222);
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -141,7 +149,8 @@ nav a.active {
     position: relative;
 }
 
-.product::before { /* Linea decorativo al di sopra del prodotto*/
+.product::before {
+    /* Linea decorativo al di sopra del prodotto*/
     content: "";
     position: absolute;
     top: 0;
@@ -151,12 +160,14 @@ nav a.active {
     background: var(--secondary);
 }
 
-.product:hover { /* Effetto hover per il prodotto */
+.product:hover {
+    /* Effetto hover per il prodotto */
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
 
-.product img { /* Immagine del prodotto (To Do)*/
+.product img {
+    /* Immagine del prodotto (To Do)*/
     width: 100%;
     height: 200px;
     object-fit: fill;
@@ -199,7 +210,8 @@ nav a.active {
 .hero {
     text-align: center;
     padding: 70px 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://example.com/hero-image.jpg') no-repeat center center; /* Immagine come placeholder per le misure */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://example.com/hero-image.jpg') no-repeat center center;
+    /* Immagine come placeholder per le misure */
     background-size: cover;
     background-position: center;
     color: var(--light);
@@ -237,7 +249,8 @@ nav a.active {
     padding: 30px 0;
 }
 
-.featured h3 {/* Titolo della sezione */
+.featured h3 {
+    /* Titolo della sezione */
     font-size: 2rem;
     margin-bottom: 20px;
     text-transform: uppercase;
@@ -253,7 +266,9 @@ nav a.active {
     content: "★ ";
     color: var(--camo-light);
 }
-.featured h3::after {/* Linea decorativa sotto il titolo */
+
+.featured h3::after {
+    /* Linea decorativa sotto il titolo */
     content: "";
     position: absolute;
     bottom: 0;
@@ -363,7 +378,8 @@ nav a.active {
     position: relative;
 }
 
-.login-container::before {/* Linea decorativa sopra il form di login */
+.login-container::before {
+    /* Linea decorativa sopra il form di login */
     content: "";
     position: absolute;
     top: 0;
@@ -386,7 +402,8 @@ nav a.active {
     text-shadow: var(--text-shadow);
 }
 
-.login-container h2::after {/* Linea decorativa sotto il titolo */
+.login-container h2::after {
+    /* Linea decorativa sotto il titolo */
     content: "";
     position: absolute;
     bottom: 0;
@@ -397,11 +414,13 @@ nav a.active {
     background: var(--secondary);
 }
 
-.form-group { /* Distanziamento tra i campi di input */
+.form-group {
+    /* Distanziamento tra i campi di input */
     margin-bottom: 20px;
 }
 
-.form-group input {/* Stile per i campi di input */
+.form-group input {
+    /* Stile per i campi di input */
     width: 100%;
     padding: 12px;
     background: var(--dark);
@@ -412,7 +431,8 @@ nav a.active {
     transition: all 0.3s ease;
 }
 
-.form-group input:focus {/* Stile per i campi di input qaundo l'utente interagisce con essi */
+.form-group input:focus {
+    /* Stile per i campi di input qaundo l'utente interagisce con essi */
     border-color: var(--secondary);
     outline: none;
     box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.2);
@@ -429,7 +449,8 @@ nav a.active {
     margin: 20px 0;
 }
 
-#search { /* Stile per la barra di ricerca nella pagina shop.html*/
+#search {
+    /* Stile per la barra di ricerca nella pagina shop.html*/
     width: 100%;
     padding: 12px 15px;
     background: var(--dark);
@@ -440,7 +461,8 @@ nav a.active {
     transition: all 0.3s ease;
 }
 
-#search:focus { /* Stile per la barra di ricerca quando l'utente interagisce con essa */
+#search:focus {
+    /* Stile per la barra di ricerca quando l'utente interagisce con essa */
     border-color: var(--secondary);
     outline: none;
     box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.2);
@@ -459,7 +481,8 @@ footer {
     border-top: 3px solid var(--secondary);
     text-align: center;
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
-    position: sticky; /* Fissa il footer in fondo alla pagina */
+    position: sticky;
+    /* Fissa il footer in fondo alla pagina */
     left: 0;
     bottom: 0;
     width: 100%;
@@ -477,21 +500,27 @@ footer p {
         gap: 10px;
         align-items: stretch;
     }
+
     nav a {
         text-align: center;
     }
+
     .cart-link {
         margin-left: 0;
     }
+
     .products {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
+
     .hero {
         padding: 40px 20px;
     }
+
     .hero h2 {
         font-size: 2rem;
     }
+
     .hero p {
         font-size: 1.1rem;
     }
@@ -501,9 +530,11 @@ footer p {
     .products {
         grid-template-columns: 1fr;
     }
+
     .cart-item {
         flex-direction: column;
     }
+
     .cart-item img {
         width: 100%;
         height: 180px;
