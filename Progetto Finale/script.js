@@ -224,3 +224,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const count = cart.reduce((total, item) => total + item.quantity, 0);
     document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
 });
+function mostraMessaggio() {
+  alert("Benvenuto, premi su INIZIA A COMPRARE per visionare il nostro catalogo oppure vai nella sezione SHOP in alto a sinistra");
+}
