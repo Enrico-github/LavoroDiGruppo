@@ -614,3 +614,10 @@ footer p {
         grid-template-columns: 1fr;
     }
 }
+.hero-gif {
+  max-width: 300px;
+  margin-bottom: 20px;
+  border: 3px solid red;
+  border-radius: 15px;
+  box-shadow: 0 0 20px red;
+}
