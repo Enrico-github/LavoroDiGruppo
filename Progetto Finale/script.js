@@ -200,9 +200,9 @@ function mostraCarrello() {
             <div>
                 <h4>${item.name}</h4>
                 <p>€${item.price.toFixed(2)} × 
-                <button onclick="aggioraQuantità(${item.id}, -1)">-</button>
+                <button onclick="aggiornaQuantità(${item.id}, -1)">-</button>
                 ${item.quantity}
-                <button onclick="aggioraQuantità(${item.id}, 1)">+</button>
+                <button onclick="aggiornaQuantità(${item.id}, 1)">+</button>
                 </p>
                 <button onclick="rimuovi(${item.id})">Remove</button> <!--Bottone per rimuovere completamente un elemento-->
             </div>
