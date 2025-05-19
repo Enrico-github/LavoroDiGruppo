@@ -1,9 +1,9 @@
 //Creazione di una array contenenti i prodotti del negozio
 const products = [
-    { id: 1, name: "M1911", price: 1099.99, image: "img/M1911.webp", video: "videoArmi/M1911.mp4" },
-    { id: 2, name: "M4A1", price: 3059.99, image: "img/M4A1.webp", video: "videoArmi/M4A1.mp4" },
-    { id: 3, name: "MP5", price: 3489.99, image: "img/mp5.webp", video: "videoArmi/MP5.mp4" },
-    { id: 4, name: "AK-74", price: 1289.99, image: "img/AK-74.webp", video: "videoArmi/AK-74.mp4" },
+    { id: 1, name: "M1911", price: 1099.99, image: "img/M1911.webp", video: "videoArmi/M1911.mp4", description: "Pistola semi-automatica M1911, calibro .45 ACP. Iconica e affidabile." },
+    { id: 2, name: "M4A1", price: 3059.99, image: "img/M4A1.webp", video: "videoArmi/M4A1.mp4", description: "Fucile d'assalto M4A1, calibro 5.56 NATO. Versatile e preciso." },
+    { id: 3, name: "MP5", price: 3489.99, image: "img/mp5.webp", video: "videoArmi/MP5.mp4", description: "Submachine gun MP5, calibro 9mm. Compatta e maneggevole." },
+    { id: 4, name: "AK-74", price: 1289.99, image: "img/AK-74.webp", video: "videoArmi/AK-74.mp4", description: "Fucile d'assalto AK-74, calibro 5.45x39mm. Affidabile e robusto." },
     { id: 5, name: "MPX", price: 2999.99, image: "img/mpx.webp" },
     { id: 6, name: "SA-58", price: 1799.99, image: "img/SA-58.webp" },
     { id: 7, name: "Saiga 12k", price: 1199.99, image: "img/saiga12k.webp" },
@@ -28,45 +28,126 @@ function aggiornaConto() {
     const count = cart.reduce((total, item) => total + item.quantity, 0); // Somma la quantità di prodotti nel carrello
     document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
 }
+//metodo che mostra i prodotti
+function mostraProdotti(productsToShow, elementId) {
+    const container = document.getElementById(elementId);
+    if (!container) return;
+
+    container.innerHTML = productsToShow.map(product => {
+        // Aggiunge il video solo se esiste la proprietà video
+        const videoHtml = product.video ? `
+            <div class="product-video">
+                <video width="100%" controls muted>
+                    <source src="${product.video}" type="video/mp4">
+                    Il tuo browser non supporta il tag video.
+                </video>
+            </div>
+        ` : '';
+
+        return `
+            <div class="product">
+                <img src="${product.image}" alt="${product.name}">
+                <h3>${product.name}</h3>
+                <p>€${product.price.toFixed(2)}</p>
+                <button onclick="mostraDettaglioProdotto(${product.id})">Visualizza dettagli</button>
+            </div>
+        `;
+    }).join('');
+}
 // Funzione per filtrare i prodotti in base al testo di ricerca
 function filtraProdotti() {
+    // Prendi il testo dalla barra di ricerca e rimuovi gli spazi iniziali e finali
     const testoRicerca = document.getElementById('search').value.trim().toLowerCase();
+
+    // Filtra i prodotti che contengono il testo di ricerca nel nome
     const prodottiFiltrati = products.filter(product =>
         product.name.toLowerCase().includes(testoRicerca)
     );
 
-    const container = document.getElementById('all-products');
-    container.innerHTML = '';
+    // Mostra i prodotti filtrati
+    mostraProdotti(prodottiFiltrati, 'all-products');
 
-    if (testoRicerca === '') {
-        // Se non c'è ricerca, mostra le sezioni normali
-        mostraProdotti(prodottiFiltrati, 'all-products');
-    } else {
-        // Se c'è ricerca, mostra tutti i prodotti filtrati senza sezioni
-        prodottiFiltrati.forEach(product => {
-            container.innerHTML += getProductHtml(product);
-        });
-    }
-
-    // Aggiorna il contatore dei risultati (mantenuto dal codice originale)
+    // Aggiorna un contatore di risultati
     const infoRisultati = document.createElement('div');
     infoRisultati.id = 'search-results-info';
     infoRisultati.style.marginTop = '10px';
 
     if (testoRicerca) {
-        infoRisultati.textContent = prodottiFiltrati.length > 0 
-            ? `Trovati ${prodottiFiltrati.length} risultati per "${testoRicerca}"` 
-            : `Nessun risultato per "${testoRicerca}"`;
+        infoRisultati.textContent = prodottiFiltrati.length > 0 ? `Trovati ${prodottiFiltrati.length} risultati per "${testoRicerca}"` : `Nessun risultato per "${testoRicerca}"`; // Mostra il numero di risultati trovati
     } else {
         infoRisultati.textContent = '';
     }
 
+    // Rimuovi eventuali messaggi precedenti
     const vecchioInfo = document.getElementById('search-results-info');
     if (vecchioInfo) vecchioInfo.remove();
 
+    // Aggiungi il nuovo messaggio dopo la barra di ricerca
     const filtriContainer = document.querySelector('.product-filters');
     if (filtriContainer) {
         filtriContainer.appendChild(infoRisultati);
+    }
+}
+// Funzione per mostrare una finestra con i dettagli del prodotto
+function mostraDettaglioProdotto(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
+    // Crea overlay per la schermata di dettaglio
+    const overlay = document.createElement('div');
+    overlay.className = 'product-detail-overlay';
+
+    // Contenuto della schermata di dettaglio
+    const detailHtml = `
+        <div class="product-detail-container">
+            <button class="detail-close-button" onclick="chiudiDettaglioProdotto()"> Close </button>
+            <div class="product-detail-content">
+                <div class="product-detail-image">
+                    <img src="${product.image}" alt="${product.name}">
+                    ${product.video ? `
+                        <div class="product-detail-video">
+                            <video width="100%" controls>
+                                <source src="${product.video}" type="video/mp4">
+                                Il tuo browser non supporta il tag video.
+                            </video>
+                        </div>
+                    ` : ''}
+                </div>
+                <div class="product-detail-info">
+                    <h2>${product.name}</h2>
+                    <p class="product-detail-price">€${product.price.toFixed(2)}</p>
+                    <div class="product-detail-description">
+                        <h3>Descrizione</h3>
+                        <p>${product.description}</p>
+                    </div>
+                    <div class="product-detail-actions">
+                        <button class="btn-add-to-cart" onclick="aggiungi(${product.id}); chiudiDettaglioProdotto();">Aggiungi al carrello</button>
+                        <button class="btn-continue-shopping" onclick="chiudiDettaglioProdotto()">Continua lo shopping</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;// Aggiunta vari contenuti dell'overlay (descrizione, video, prezzo, ecc)
+
+    overlay.innerHTML = detailHtml;
+    document.body.appendChild(overlay);
+    document.body.style.overflow = 'hidden'; // Blocca lo scroll della pagina
+
+    // Aggiungi una transizione per l'animazione di entrata
+    setTimeout(() => {
+        overlay.classList.add('active');
+    }, 10);
+}
+
+// Funzione per chiudere la finestra di dettaglio
+function chiudiDettaglioProdotto() {
+    const overlay = document.querySelector('.product-detail-overlay');
+    if (overlay) {
+        overlay.classList.remove('active');
+        setTimeout(() => {
+            overlay.remove();
+            document.body.style.overflow = ''; // Ripristina lo scroll
+        }, 300); // Tempo corrispondente alla durata della transizione in CSS
     }
 }
 //aggiunge un prodotto al carello, ma se esiste già ne aumenta il numero
@@ -92,7 +173,7 @@ function rimuovi(productId) {
     mostraCarrello();
 }
 //aggiunge manualmente la quantità di un prodotto dentro al carrello
-function aggioraQuantità(productId, change) {
+function aggiornaQuantità(productId, change) {
     const item = cart.find(item => item.id === productId);
     if (!item) return;
 
@@ -151,11 +232,6 @@ function login() {
 }
 //metodo di inizializzazione dei prodotti, carrello, login
 function init() {
-    const searchInput = document.getElementById('search');
-if (searchInput) {
-    searchInput.addEventListener('input', filtraProdotti);
-    searchInput.addEventListener('search', filtraProdotti); // Questo cattura anche la cancellazione
-}
     if (window.location.pathname.includes('index.html')) {
         mostraProdotti(products.slice(0, 3), 'featured-products');
     } else if (window.location.pathname.includes('shop.html')) {
@@ -210,53 +286,5 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
 });
 function mostraMessaggio() {
-  alert("Benvenuto, premi su INIZIA A COMPRARE per visionare il nostro catalogo oppure vai nella sezione SHOP in alto a sinistra");
-}
-function mostraProdotti(productsToShow, elementId) {
-    const container = document.getElementById(elementId);
-    if (!container) return;
-
-    container.innerHTML = '';
-
-    // Mostra solo sezioni se non c'è una ricerca attiva
-    const isSearching = document.getElementById('search').value.trim() !== '';
-    
-    if (!isSearching) {
-        container.innerHTML += '<h3 class="section-title" style="grid-column: 1/-1; color: var(--light); text-align: center; margin: 20px 0; font-size: 1.8rem; text-transform: uppercase;">ARMI IN EVIDENZA</h3>';
-        
-        productsToShow.slice(0, 4).forEach(product => {
-            container.innerHTML += getProductHtml(product);
-        });
-        
-        container.innerHTML += '<h3 class="section-title" style="grid-column: 1/-1; color: var(--light); text-align: center; margin: 20px 0; font-size: 1.8rem; text-transform: uppercase;">CATALOGO</h3>';
-        
-        productsToShow.slice(4).forEach(product => {
-            container.innerHTML += getProductHtml(product);
-        });
-    } else {
-        productsToShow.forEach(product => {
-            container.innerHTML += getProductHtml(product);
-        });
-    }
-}
-// Funzione helper per generare l'HTML di un singolo prodotto
-function getProductHtml(product) {
-    const videoHtml = product.video ? `
-        <div class="product-video">
-            <video width="100%" controls muted>
-                <source src="${product.video}" type="video/mp4">
-                Il tuo browser non supporta il tag video.
-            </video>
-        </div>
-    ` : '';
-
-    return `
-        <div class="product">
-            <img src="${product.image}" alt="${product.name}">
-            ${videoHtml}
-            <h3>${product.name}</h3>
-            <p>€${product.price.toFixed(2)}</p>
-            <button onclick="aggiungi(${product.id})">Add to Cart</button>
-        </div>
-    `;
+    alert("Benvenuto, premi su INIZIA A COMPRARE per visionare il nostro catalogo oppure vai nella sezione SHOP in alto a sinistra");
 }
