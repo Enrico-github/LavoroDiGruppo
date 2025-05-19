@@ -1,0 +1,56 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+  font-family: sans-serif;
+}
+
+.frame {
+  position: relative;
+  width: 300px;
+  padding: 10px;
+  border: 5px solid transparent;
+  animation: borderAnimation 4s infinite;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.photo {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.photo:hover {
+  transform: scale(1.05);
+}
+
+.description {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #333;
+}
+
+@keyframes borderAnimation {
+  0% {
+    border-color: #ff4e50;
+  }
+  25% {
+    border-color: #fc913a;
+  }
+  50% {
+    border-color: #f9d423;
+  }
+  75% {
+    border-color: #eae374;
+  }
+  100% {
+    border-color: #ff4e50;
+  }
+}
