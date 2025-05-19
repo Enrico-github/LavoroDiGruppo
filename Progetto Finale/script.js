@@ -222,13 +222,13 @@ function mostraProdotti(productsToShow, elementId) {
     const isSearching = document.getElementById('search').value.trim() !== '';
     
     if (!isSearching) {
-        container.innerHTML += '<h3 class="section-title" style="grid-column: 1/-1; color: var(--secondary); text-align: center; margin: 20px 0; font-size: 1.8rem; text-transform: uppercase;">ARMI IN EVIDENZA</h3>';
+        container.innerHTML += '<h3 class="section-title" style="grid-column: 1/-1; color: var(--light); text-align: center; margin: 20px 0; font-size: 1.8rem; text-transform: uppercase;">ARMI IN EVIDENZA</h3>';
         
         productsToShow.slice(0, 4).forEach(product => {
             container.innerHTML += getProductHtml(product);
         });
         
-        container.innerHTML += '<h3 class="section-title" style="grid-column: 1/-1; color: var(--secondary); text-align: center; margin: 20px 0; font-size: 1.8rem; text-transform: uppercase;">CATALOGO</h3>';
+        container.innerHTML += '<h3 class="section-title" style="grid-column: 1/-1; color: var(--light); text-align: center; margin: 20px 0; font-size: 1.8rem; text-transform: uppercase;">CATALOGO</h3>';
         
         productsToShow.slice(4).forEach(product => {
             container.innerHTML += getProductHtml(product);
