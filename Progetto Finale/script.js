@@ -28,62 +28,42 @@ function aggiornaConto() {
     const count = cart.reduce((total, item) => total + item.quantity, 0); // Somma la quantità di prodotti nel carrello
     document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
 }
-//metodo che mostra i prodotti
-function mostraProdotti(productsToShow, elementId) {
-    const container = document.getElementById(elementId);
-    if (!container) return;
-
-    container.innerHTML = productsToShow.map(product => {
-        // Aggiunge il video solo se esiste la proprietà video
-        const videoHtml = product.video ? `
-            <div class="product-video">
-                <video width="100%" controls muted>
-                    <source src="${product.video}" type="video/mp4">
-                    Il tuo browser non supporta il tag video.
-                </video>
-            </div>
-        ` : '';
-
-        return `
-            <div class="product">
-                <img src="${product.image}" alt="${product.name}">
-                ${videoHtml}
-                <h3>${product.name}</h3>
-                <p>€${product.price.toFixed(2)}</p>
-                <button onclick="aggiungi(${product.id})">Add to Cart</button>
-            </div>
-        `;
-    }).join('');
-}
 // Funzione per filtrare i prodotti in base al testo di ricerca
 function filtraProdotti() {
-    // Prendi il testo dalla barra di ricerca e rimuovi gli spazi iniziali e finali
     const testoRicerca = document.getElementById('search').value.trim().toLowerCase();
-
-    // Filtra i prodotti che contengono il testo di ricerca nel nome
     const prodottiFiltrati = products.filter(product =>
         product.name.toLowerCase().includes(testoRicerca)
     );
 
-    // Mostra i prodotti filtrati
-    mostraProdotti(prodottiFiltrati, 'all-products');
+    const container = document.getElementById('all-products');
+    container.innerHTML = '';
 
-    // Aggiorna un contatore di risultati
+    if (testoRicerca === '') {
+        // Se non c'è ricerca, mostra le sezioni normali
+        mostraProdotti(prodottiFiltrati, 'all-products');
+    } else {
+        // Se c'è ricerca, mostra tutti i prodotti filtrati senza sezioni
+        prodottiFiltrati.forEach(product => {
+            container.innerHTML += getProductHtml(product);
+        });
+    }
+
+    // Aggiorna il contatore dei risultati (mantenuto dal codice originale)
     const infoRisultati = document.createElement('div');
     infoRisultati.id = 'search-results-info';
     infoRisultati.style.marginTop = '10px';
 
     if (testoRicerca) {
-        infoRisultati.textContent = prodottiFiltrati.length > 0 ? `Trovati ${prodottiFiltrati.length} risultati per "${testoRicerca}"` : `Nessun risultato per "${testoRicerca}"`;
+        infoRisultati.textContent = prodottiFiltrati.length > 0 
+            ? `Trovati ${prodottiFiltrati.length} risultati per "${testoRicerca}"` 
+            : `Nessun risultato per "${testoRicerca}"`;
     } else {
         infoRisultati.textContent = '';
     }
 
-    // Rimuovi eventuali messaggi precedenti
     const vecchioInfo = document.getElementById('search-results-info');
     if (vecchioInfo) vecchioInfo.remove();
 
-    // Aggiungi il nuovo messaggio dopo la barra di ricerca
     const filtriContainer = document.querySelector('.product-filters');
     if (filtriContainer) {
         filtriContainer.appendChild(infoRisultati);
@@ -171,6 +151,11 @@ function login() {
 }
 //metodo di inizializzazione dei prodotti, carrello, login
 function init() {
+    const searchInput = document.getElementById('search');
+if (searchInput) {
+    searchInput.addEventListener('input', filtraProdotti);
+    searchInput.addEventListener('search', filtraProdotti); // Questo cattura anche la cancellazione
+}
     if (window.location.pathname.includes('index.html')) {
         mostraProdotti(products.slice(0, 3), 'featured-products');
     } else if (window.location.pathname.includes('shop.html')) {
@@ -226,4 +211,52 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 function mostraMessaggio() {
   alert("Benvenuto, premi su INIZIA A COMPRARE per visionare il nostro catalogo oppure vai nella sezione SHOP in alto a sinistra");
+}
+function mostraProdotti(productsToShow, elementId) {
+    const container = document.getElementById(elementId);
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    // Mostra solo sezioni se non c'è una ricerca attiva
+    const isSearching = document.getElementById('search').value.trim() !== '';
+    
+    if (!isSearching) {
+        container.innerHTML += '<h3 class="section-title" style="grid-column: 1/-1; color: var(--secondary); text-align: center; margin: 20px 0; font-size: 1.8rem; text-transform: uppercase;">ARMI IN EVIDENZA</h3>';
+        
+        productsToShow.slice(0, 4).forEach(product => {
+            container.innerHTML += getProductHtml(product);
+        });
+        
+        container.innerHTML += '<h3 class="section-title" style="grid-column: 1/-1; color: var(--secondary); text-align: center; margin: 20px 0; font-size: 1.8rem; text-transform: uppercase;">CATALOGO</h3>';
+        
+        productsToShow.slice(4).forEach(product => {
+            container.innerHTML += getProductHtml(product);
+        });
+    } else {
+        productsToShow.forEach(product => {
+            container.innerHTML += getProductHtml(product);
+        });
+    }
+}
+// Funzione helper per generare l'HTML di un singolo prodotto
+function getProductHtml(product) {
+    const videoHtml = product.video ? `
+        <div class="product-video">
+            <video width="100%" controls muted>
+                <source src="${product.video}" type="video/mp4">
+                Il tuo browser non supporta il tag video.
+            </video>
+        </div>
+    ` : '';
+
+    return `
+        <div class="product">
+            <img src="${product.image}" alt="${product.name}">
+            ${videoHtml}
+            <h3>${product.name}</h3>
+            <p>€${product.price.toFixed(2)}</p>
+            <button onclick="aggiungi(${product.id})">Add to Cart</button>
+        </div>
+    `;
 }
